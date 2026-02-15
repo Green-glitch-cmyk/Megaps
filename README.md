@@ -1,1 +1,596 @@
-# Megaps
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>MegapsOS v0.6.8 — xCore Systems</title>
+    <meta name="description" content="Операционная система MegapsOS">
+    <style type="text/css">
+        /* Нормальный корпоративный стиль */
+        body {
+            background: #FFFFFF;
+            color: #222222;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        .header {
+            background: #1a2632;
+            color: #ffffff;
+            padding: 50px 0;
+            text-align: center;
+            border-bottom: 5px solid #f39c12;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 64px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header h1 span {
+            color: #f39c12;
+            font-weight: 700;
+        }
+        
+        .header p {
+            margin: 15px 0 0 0;
+            font-size: 22px;
+            color: #ecf0f1;
+            font-weight: 300;
+        }
+        
+        .header .version-badge {
+            background: #f39c12;
+            color: #1a2632;
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+        
+        /* Меню */
+        .menu {
+            background: #2c3e50;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            margin: 0 5px;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+        
+        .menu a:hover {
+            background: #f39c12;
+            color: #1a2632;
+        }
+        
+        /* Блоки */
+        .content-section {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: #1a2632;
+            font-size: 32px;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #f39c12;
+        }
+        
+        h3 {
+            color: #f39c12;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            font-size: 14px;
+        }
+        
+        th {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        td {
+            padding: 15px;
+            border: 1px solid #d5d5d5;
+            color: #333333;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Код */
+        pre {
+            background: #1a2632;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            line-height: 1.4;
+        }
+        
+        code {
+            background: #ecf0f1;
+            color: #c0392b;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Инфо-блоки */
+        .info-box {
+            background: #e8f4fd;
+            border-left: 6px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #1a2632;
+        }
+        
+        .warning-box {
+            background: #fff4e6;
+            border-left: 6px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #1a2632;
+        }
+        
+        .success-box {
+            background: #e6f7e6;
+            border-left: 6px solid #27ae60;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #1a2632;
+        }
+        
+        /* Кнопки */
+        .button {
+            display: inline-block;
+            background: #f39c12;
+            color: #1a2632;
+            padding: 14px 35px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            font-size: 16px;
+            border: none;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            background: #e67e22;
+            color: white;
+            box-shadow: 0 4px 12px rgba(243,156,18,0.3);
+        }
+        
+        .button.small {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        
+        .button.alt {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .button.alt:hover {
+            background: #1a2632;
+            box-shadow: 0 4px 12px rgba(44,62,80,0.3);
+        }
+        
+        /* Футер */
+        .footer {
+            background: #1a2632;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #f39c12;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Список команд */
+        .command-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .command-item {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        
+        .command-item:hover {
+            background: #ffffff;
+            border-color: #f39c12;
+            box-shadow: 0 2px 8px rgba(243,156,18,0.15);
+        }
+        
+        .command-item strong {
+            color: #f39c12;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .command-item small {
+            color: #666666;
+            font-size: 13px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #f39c12;
+            color: #1a2632;
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 20px;
+            margin-left: 10px;
+            font-weight: 700;
+        }
+        
+        .status {
+            color: #27ae60;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .download-block {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            padding: 40px;
+            border-radius: 8px;
+            color: #1a2632;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .download-block h3 {
+            color: #1a2632;
+            margin-top: 0;
+            font-size: 28px;
+        }
+        
+        .download-block .price {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <h1>Megaps<span>OS</span></h1>
+        <p>Операционная система для настоящих пацанов</p>
+        <div class="version-badge">Текущая версия: 0.6.8</div>
+    </div>
+</div>
+
+<div class="menu">
+    <div class="container">
+        <a href="#">Главная</a>
+        <a href="#docs">Документация</a>
+        <a href="#commands">Команды</a>
+        <a href="#download">Скачать</a>
+        <a href="#roadmap">Планы</a>
+        <a href="#about">О проекте</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Герой -->
+    <div class="content-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+        <h2 style="color: white; border-bottom-color: #f39c12;">Красава, что зашел!</h2>
+        <p style="font-size: 18px; margin-bottom: 25px;">MegapsOS — это операционка, которую мы пишем на C# под Cosmos. Никакого выпендрежа, просто рабочий инструмент.</p>
+        <p style="font-size: 16px;">Файловая система FAT32, 20+ команд, цветной интерфейс и звуки как на Sega. Всё работает из коробки.</p>
+    </div>
+
+    <!-- О системе -->
+    <div class="content-section" id="about">
+        <h2>Чё за зверь?</h2>
+        <p><strong>MegapsOS</strong> — это операционка для тех, кто шарит. Не очередной Linux на коленке, а своя архитектура от и до.</p>
+        
+        <div class="info-box">
+            <strong>По факту:</strong> Легкая, быстрая, делает что скажешь. Загружается за секунды, жрет минимум памяти, не собирает телеметрию и не просит обновляться по 100 раз.
+        </div>
+        
+        <h3>Для кого это?</h3>
+        <p>Для разработчиков, энтузиастов и просто пацанов, которым интересно как там под капотом. Если ты лох — ставь Windows, а если пацан — оставайся с нами.</p>
+        
+        <div class="success-box">
+            <strong>Ваще:</strong> Версия 0.6.8 уже вполне рабочая. Можно файлы создавать, удалять, по папкам ходить, системой управлять. И звуки есть — как на Sega.
+        </div>
+    </div>
+
+    <!-- Документация -->
+    <div class="content-section" id="docs">
+        <h2>Документация</h2>
+        
+        <h3>Быстрый старт</h3>
+        <p>Скачал ISO — загружайся на виртуалку или реальный комп. Всё само встанет.</p>
+        
+        <pre>
+MegapsOS:0:\> help          # помощь
+MegapsOS:0:\> ver           # версия
+MegapsOS:0:\> raminfo       # сколько ОЗУ
+MegapsOS:0:\> ls            # список файлов
+MegapsOS:0:\> cd games      # зайти в папку games
+MegapsOS:0:\> mf readme.txt # создать файл
+        </pre>
+        
+        <h3>Навигация по файлам</h3>
+        <table>
+            <tr>
+                <th>Команда</th>
+                <th>Описание</th>
+                <th>Пример</th>
+            </tr>
+            <tr>
+                <td><code>cd</code></td>
+                <td>Переход по папкам</td>
+                <td><code>cd system</code> или <code>cd ..</code></td>
+            </tr>
+            <tr>
+                <td><code>ls / dir</code></td>
+                <td>Показать содержимое</td>
+                <td><code>ls</code></td>
+            </tr>
+            <tr>
+                <td><code>mkdir / md</code></td>
+                <td>Создать папку</td>
+                <td><code>md games</code></td>
+            </tr>
+            <tr>
+                <td><code>touch / mf</code></td>
+                <td>Создать файл</td>
+                <td><code>mf config.cfg</code></td>
+            </tr>
+            <tr>
+                <td><code>cat / type</code></td>
+                <td>Посмотреть файл</td>
+                <td><code>cat readme.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>rm / rf</code></td>
+                <td>Удалить файл</td>
+                <td><code>rm trash.txt</code></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Команды подробно -->
+    <div class="content-section" id="commands">
+        <h2>Все команды</h2>
+        
+        <div class="command-list">
+            <div class="command-item">
+                <strong>help</strong>
+                <small>Помощь по системе</small>
+            </div>
+            <div class="command-item">
+                <strong>ver</strong>
+                <small>Версия ОС</small>
+            </div>
+            <div class="command-item">
+                <strong>datetime</strong>
+                <small>Дата/время</small>
+            </div>
+            <div class="command-item">
+                <strong>raminfo</strong>
+                <small>Инфо по RAM</small>
+            </div>
+            <div class="command-item">
+                <strong>clear/cls</strong>
+                <small>Очистка экрана</small>
+            </div>
+            <div class="command-item">
+                <strong>shutdown</strong>
+                <small>Выключение</small>
+            </div>
+            <div class="command-item">
+                <strong>reboot</strong>
+                <small>Перезагрузка</small>
+            </div>
+            <div class="command-item">
+                <strong>echo</strong>
+                <small>Вывод текста</small>
+            </div>
+            <div class="command-item">
+                <strong>ls/dir</strong>
+                <small>Список файлов</small>
+            </div>
+            <div class="command-item">
+                <strong>cd</strong>
+                <small>Сменить папку</small>
+            </div>
+            <div class="command-item">
+                <strong>mkdir/md</strong>
+                <small>Создать папку</small>
+            </div>
+            <div class="command-item">
+                <strong>rmdir/rd</strong>
+                <small>Удалить папку</small>
+            </div>
+            <div class="command-item">
+                <strong>touch/mf</strong>
+                <small>Создать файл</small>
+            </div>
+            <div class="command-item">
+                <strong>rm/rf</strong>
+                <small>Удалить файл</small>
+            </div>
+            <div class="command-item">
+                <strong>cat/type</strong>
+                <small>Прочесть файл</small>
+            </div>
+            <div class="command-item">
+                <strong>system list</strong>
+                <small>Детальный список</small>
+            </div>
+            <div class="command-item">
+                <strong>run calc</strong>
+                <small>Калькулятор</small>
+            </div>
+        </div>
+        
+        <p>Для ленивых есть <code>system makefile</code>, <code>system makedir</code> и другие — всё в интерактивном режиме с подтверждениями.</p>
+    </div>
+
+    <!-- Планы -->
+    <div class="content-section" id="roadmap">
+        <h2>Что дальше?</h2>
+        
+        <table>
+            <tr>
+                <th>Версия</th>
+                <th>Срок</th>
+                <th>Что добавим</th>
+            </tr>
+            <tr>
+                <td><strong>v0.7.0</strong></td>
+                <td>Март 2026</td>
+                <td>Стабильность, логирование, фикс багов</td>
+            </tr>
+            <tr>
+                <td><strong>v0.8.0</strong></td>
+                <td>Апрель 2026</td>
+                <td>copy/move, простой редактор, sysinfo</td>
+            </tr>
+            <tr>
+                <td><strong>v0.9.0</strong></td>
+                <td>Май 2026</td>
+                <td>Автодополнение, история команд, конфиги</td>
+            </tr>
+            <tr>
+                <td><strong>v1.0</strong></td>
+                <td>Июнь 2026</td>
+                <td>Стабильный релиз, полная документация</td>
+            </tr>
+        </table>
+        
+        <div class="warning-box">
+            <strong>Имей в виду:</strong> В версии 0.6.8 пока нет копирования файлов и редактора. Но база уже пашет как надо.
+        </div>
+    </div>
+
+    <!-- Скачать -->
+    <div class="content-section" id="download">
+        <h2>Скачать</h2>
+        
+        <div class="download-block">
+            <h3>MegapsOS v0.6.8-alpha</h3>
+            <div class="price">Бесплатно</div>
+            <p style="margin-bottom: 25px; font-size: 16px;">ISO образ • 42 МБ • Для x86</p>
+            <a href="#" class="button" style="background: #1a2632; color: white; font-size: 20px; padding: 16px 50px;">Скачать .ISO</a>
+            <p style="margin-top: 20px;"><a href="#" style="color: #1a2632;">MD5: de305d54-75b4-431b-adb2-eb6b9e546013</a></p>
+        </div>
+        
+        <h3>Системные требования</h3>
+        <ul>
+            <li>Процессор: x86 (32 или 64 бита) — подойдёт любой древний Pentium</li>
+            <li>ОЗУ: от 64 МБ</li>
+            <li>Жесткий диск: 50+ МБ свободно</li>
+            <li>Видео: VGA совместимый</li>
+        </ul>
+        
+        <p>Работает на реальном железе и в VirtualBox/VMware/QEMU.</p>
+    </div>
+
+    <!-- Футер -->
+    <div style="background: #f0f4f8; padding: 30px; border-radius: 8px; margin: 40px 0;">
+        <h3 style="margin-top: 0;">Контакты</h3>
+        <p>По всем вопросам: <strong><a href="mailto:xcore@megaps.ru">xcore@megaps.ru</a></strong></p>
+        <p>Канал в Telegram: <strong>@megapsos_news</strong></p>
+        <p>IRC: <strong>#megapsos</strong> на irc.efnet.ru</p>
+    </div>
+
+</div>
+
+<div class="footer">
+    <div class="container">
+        <p>© xCore, 2025-2026. Все права защищены.</p>
+        <p style="margin-top: 10px; font-size: 12px;">MegapsOS — свободная операционная система. Сделано в России.</p>
+    </div>
+</div>
+
+</body>
+</html>
